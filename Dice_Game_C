@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+int zarat();
+int main()
+{/*• Oyuncu 2 adet zar atar, zarýn üzerinde gelen
+rakamlarýn toplamýna göre:
+• 7 veya 11 gelirse KAZANIR
+• 2 - 3 veya 12 gelirse KAYBEDER
+• Diðer rakamlardan biri gelmiþ ise (örneðin 8 )
+bu toplam puan olur ve bir kez daha zar atýlýr.
+Buna ikinci tur diyelim
+• 2. turda gelen zar eðer 7 ise KABEDER
+• 2. turda gelen zar toplam puana eþitse
+(örenðin 8) KAZANIR
+• Diðer durumda zar atýlmaya devam eder ve 2.
+Tur kurallarý geçerli olur*/
+int puan=0,top=0,zar1,zar2;
+
+   zar1=zarat();
+   zar2=zarat();
+   top=zar1+zar2;
+   if(top==7||top==11)
+    printf("KAZANDINIZ");
+
+ else if(top==2||top==3||top==12)
+    printf("KAYBETTÝNÝZ");
+   else {
+    puan=top;
+
+
+   do{
+    zar1=zarat();
+   zar2=zarat();
+   top=zar1+zar2;
+   if (top==7){
+    printf("KAYBETTÝNÝZ");
+    break;}
+   if (top==puan){
+    printf("KAZANDINIZ");
+break;}
+   }while(top!=puan);
+   }
+   }
+   int zarat(){
+return (rand()%6)+1;
+}
