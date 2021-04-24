@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bilgi_Yarismasi
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //    Kurallar:
+            //    Toplamda 3 soru sorulacak
+            //    Her soru 4 şıklı olacak
+            //    Diğer soruyu görebilmek için önceki soru doğru bilinecek
+            //    Yanlış cevap verilirse oyun sona erecek
+            string cevap;
+            string soru1, soru2, soru3;
+            Console.WriteLine("1.soru:5*2 nedir?\n Şıklar: a)5 b)10 c)15 d)20\n Lütfen şıkkı girin");
+            //Console.ReadLine();
+            cevap = Console.ReadLine();
+            if (cevap != "b" && cevap !="B")
+            {
+                Console.Write("KAYBETTİNİZ");
+                Console.Read();
+            }
+            else
+            {
+                Console.WriteLine("Tebrikler doğru bildiniz \n2.soru:9*7 nedir?\n Şıklar: a)45 b)54 c)63 d)72\n Lütfen şıkkı girin");
+                cevap = Console.ReadLine();
+
+                if (cevap != "c" && cevap != "C")
+                {
+                    Console.Write("KAYBETTİNİZ");
+                    Console.Read();
+                }
+                else
+                {
+                    Console.WriteLine("Tebrikler doğru bildiniz \n3.soru:12*11 nedir?\n Şıklar: a)132 b)143 c)175 d)142\n Lütfen şıkkı girin");
+                    cevap = Console.ReadLine();
+
+                    if (cevap != "a" && cevap != "A")
+                    {
+                        Console.Write("KAYBETTİNİZ");
+                        Console.Read();
+                    }
+                    else
+                        Console.Write("KAZANDINIZ TEBRİKLER");
+                    Console.Read();
+                }
+            }
+
+        }
+    }
+}
