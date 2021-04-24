@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Alfabe
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Dizi kullanarak kullanıcıdan alının harf in alfabede kaçıncı olduğunu gösteren kod
+           string[] alfabe= { "a","b","c","ç","d","e","f","g","ğ","h","ı","i","j","k","l","m","n","o","ö","p","r","s","ş","t","u","ü","v","y","z"};
+            int sira,toplam;
+            string b;
+            toplam = 0;
+            Console.WriteLine("Bir harf giriniz:");
+            b = Console.ReadLine();
+            sira =Array.IndexOf(alfabe, b);
+            foreach (string a in alfabe)//harften başka bir şey girilirse hata göstermesi için kullanıldı
+            {
+                if (b == a)
+                {
+                    Console.WriteLine(b+" harfi "+(sira + 1)+". sıradadır");
+                    Console.Read();
+                    break;
+                }
+                else if (toplam != 28)
+                {
+                    toplam += 1;
+                }
+                else
+                {
+                    Console.WriteLine("Hatalı giriş yaptınız");
+                    Console.Read();
+                }
+            }
+
+
+           
+
+
+
+        }
+    }
+}
