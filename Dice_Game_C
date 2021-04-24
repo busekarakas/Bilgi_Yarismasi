@@ -40,6 +40,7 @@ int puan=0,top=0,zar1,zar2;
 break;}
    }while(top!=puan);
    }
+   return 0;
    }
    int zarat(){
 return (rand()%6)+1;
