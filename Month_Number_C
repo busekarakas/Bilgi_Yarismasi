@@ -1,0 +1,34 @@
+int main()
+{
+  /*: Kullanıcının klavyeden girdiği AY numarasına
+göre, o ayın kaç günden oluştuğunu ekrana yazan bir
+C programı yazınız. İlgili program için kullanıcının AY
+numarası olarak 1-12 arasında (bu sayılar dahil)
+değer girmesini sağlayınız. Eğer kullanıcı yanlış bir
+değer girmiş ise, ekrana bir hata mesajı bastırarak
+kullanıcının doğru değeri girmesini isteyiniz. İlgili
+kontrol yapısı kullanıcı doğru değer girene kadar
+devam etmelidir.*/
+
+  int ay;
+printf("Lutfen ay numarasi giriniz\n");
+  scanf("%d",&ay);
+while(ay<1 || ay >12){
+   printf("Hatali ay sayisi girdiniz tekrar giriniz");
+   scanf("%d",&ay);}
+
+  switch (ay){
+  case 1 :
+  case 3:
+  case 5:
+  case 7:
+  case 8:
+  case 10:
+  case 12:printf("Bu ay 31 gundur"); break;
+  case 2:printf("Bu ay 28 gundur"); break;
+  case 4:
+  case 6:
+  case 9:
+  case 11: printf("Bu ay 30 gundur"); break;}
+  return 0;
+  }
