@@ -1,0 +1,171 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Program
+    {
+        static void Main(string[] args)
+        { //Araba sınıfında girilen değerleri ekrana yazdırma
+            Araba ar = new Araba();
+            ar.hız = 50;
+            ar.marka = "marka1";
+            ar.model = "2021";
+            ar.motor = 0.5;
+            ar.renk = "kırmızı";
+
+            Console.WriteLine("Marka:" + ar.marka + "\nModel:" + ar.model + "\nHız:" + ar.hız + "\nMotor:" + ar.motor + "\nRenk:" + ar.renk);
+            Console.WriteLine("*****************");
+            Console.WriteLine();
+
+
+            //Müşteri sınıfından Kapsülleme yöntemiyle kullanıcıdan girilen değerlerin hepsini büyük yazdırma
+            Console.WriteLine("****Müşteri Kimliği****");
+            Musteri m = new Musteri();
+
+            Console.WriteLine("ID değeri girin:");
+            m.id = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Adınız");
+            m.Ad = Console.ReadLine();
+
+            Console.WriteLine("Soyadınız");
+            m.Soyad = Console.ReadLine();
+
+            Console.WriteLine("Yaşadığınız Şehir:");
+            m.Sehir = Console.ReadLine();
+
+            Console.WriteLine(m.id + "-" + m.Ad + "-" + m.Soyad + "-" + m.Sehir);
+            Console.WriteLine("*****************");
+          
+            
+            
+            //Kalıtımla kuşlar sınınfa girdiğimiz özelliklerin papagan sınıfında da işlenmesini sağlıyoruz
+
+            Console.WriteLine("\nPapağan türünün özellikleri");
+            Papagan p = new Papagan();
+            p.agirlik = 1560;
+            p.hız = 50;
+            p.isim = "maviş";
+            p.renk = "mavi";
+            p.tur = "papağan";
+            p.sescikar();
+
+            Console.WriteLine("Tür:" + p.tur + "\nİsim:" + p.isim + "\nRenk:" + p.renk +  "\nAğırlık:" + p.agirlik + "\nHız:" + p.hız);
+            Console.WriteLine("Ses:" + p.sescikar());
+
+           
+            Console.WriteLine("***********************");
+
+
+            Console.WriteLine("\nKarga türünün özellikleri");
+            Karga k = new Karga();
+            k.agirlik = 1500;
+            k.hız = 60;
+            k.isim = "kara";
+            k.renk = "siyah";
+            k.tur = "karga";
+            k.sescikar();
+
+            Console.WriteLine("Tür:" + k.tur + "\nİsim:" + k.isim + "\nRenk:" + k.renk + "\nAğırlık:" + k.agirlik + "\nHız:" + k.hız);
+            Console.WriteLine("Ses:" + k.sescikar());
+
+            Console.Read();
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Araba
+    {
+        public string marka, model, renk;
+        public int hız;
+        public double motor;
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Musteri
+    {
+        public string sehir;
+        public int id;
+        public string ad;
+        public string soyad;
+        // kapsülleme ctrl+r+e
+        public string Ad { get => ad; set => ad = value.ToUpper(); }
+        public string Soyad { get => soyad; set => soyad = value.ToUpper(); }
+        public string Sehir { get => sehir; set => sehir = value.ToUpper(); }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Kuslar
+    {
+        public string tur;
+        public int hız, agirlik;
+        
+        //Çok biçimlilikle başka sınıflarda bu özelliği değiştirerek kullanabileceğiz
+        public virtual string sescikar()
+        {
+            return "Buraya ses yazılacak";
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Papagan : Kuslar
+    {
+        public string isim, renk;
+
+        public override string sescikar()
+        {
+            return "cik cik";
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Siniflar
+{
+    class Karga:Kuslar
+    {
+        public string isim, renk;
+
+        public override string sescikar()
+        {
+            return "gak gak";
+        }
+    }
+}
