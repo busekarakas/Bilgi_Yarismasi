@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Yasanan_Gunler
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Kullanıcıdan kaç yaşında olduğu girilmesi istenip bu güne kadar kaç gün yaşadığını gösteren kod
+            TimeSpan gun;
+            DateTime tarih, gunumuz;
+            Console.WriteLine("Doğum tarihinizi girin:");
+            tarih = Convert.ToDateTime(Console.ReadLine());
+            gunumuz = Convert.ToDateTime(DateTime.Now.ToLongDateString());
+            gun = gunumuz - tarih;
+            
+            Console.WriteLine("Yaşanılan gün sayısı:"+gun);
+            Console.Read();
+
+        }
+    }
+}
