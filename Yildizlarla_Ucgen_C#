@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Yildizlarla_Dik_Ucgen_Olusturma
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {// kullanıcıdan sayı girişi alıp bu sayı kadar uzunlukda dik üçgen yazdırma
+
+            int a,b;
+            string sekil;
+            Console.WriteLine("Üçgeni oluşturmak için bir sayı giriniz:");
+            a = Convert.ToInt16(Console.ReadLine());
+            sekil = "*";
+            for (int i = 0; i < a; i++)
+            {
+                Console.WriteLine(sekil);
+                //Console.ReadLine();
+                sekil = sekil + "*";
+                
+            }
+
+            // kullanıcıdan girilen değerle ters dik üçgen yazdırma
+
+            Console.WriteLine("Üçgeni oluşturmak için bir sayı giriniz:");
+            a = Convert.ToInt16(Console.ReadLine());
+
+            for (int i = a; i >1 ; i--)
+            {
+                for (int j = 1; j <i; j++)
+                {
+                    Console.Write("*");
+                   
+                }
+                Console.WriteLine();
+            }
+
+
+            Console.Read();
+        }
+    }
+}
