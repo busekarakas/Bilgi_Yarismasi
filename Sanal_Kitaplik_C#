@@ -1,0 +1,193 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Kitaplik_Projesi
+{
+    class Program
+    {
+        
+
+        static void Main(string[] args)
+        {
+            string secim, ad, soyad, universite;
+            int ktpsecim, a = 1, rnd,dvm=0;
+            int cvp = 1, ttutar = 0, s;
+            string cevap;
+            string[] ktplr = { "Kuyucaklı Yusuf", "Çalıkuşu", "Aşk-ı Memnu", "Tutunamayanlar", "Masumiyet Müzesi", "Sinekli Bakkal", "Dorian Grey'in Portresi", "Genç Werther'ın Acıları", "Cehennem", "Fahrenheit 451", "Gurur ve Önyargı", "Simyacı" };
+            int[] fiyat = { 15, 20, 33, 16, 14, 14, 18, 5, 40, 25, 24, 9 };
+            Console.WriteLine("****************************************************************************************************");
+            Console.WriteLine("\n**        TÜRKÇE KİTAPLAR KATEGORİSİ        **            YABANCI KİTAPLAR KATEGORİSİ             **");
+
+            Console.WriteLine("\n** 1)Kuyucaklı Yusuf: Sabahattin Ali        **        7)Dorian Grey'in Portresi: Oscar Wilde      **");
+            Console.WriteLine("\n** 2)Çalıkuşu: Reşat Nuri                   **        8)Genç Werther'ın Acıları: Johann Wolfgang  **");
+            Console.WriteLine("\n** 3)Aşk-ı Memnu: Halit Ziya                **        9)Cehennem: Dan Brown                       **");
+            Console.WriteLine("\n** 4)Tutunamayanlar: Oğuz Atay              **        10)Fahrenheit 451: Ray Bradbury             **");
+            Console.WriteLine("\n** 5)Masumiyet Müzesi: Orhan Pamuk          **        11)Gurur ve Önyargı: Jane Austen            **");
+            Console.WriteLine("\n** 6)Sinekli Bakkal: Halide Edip            **        12)Simyacı: Paulo Coelho                    **");
+            Console.WriteLine("\n****************************************************************************************************\n");
+            while (a == 1)
+            {
+                Console.WriteLine("****İŞLEMLER MENÜSÜ****\n");
+                Console.WriteLine("1-Fiyat Sorgulama\n2-Yeni Okur Kaydı\n3-Kitap Önerisi\n4-Yeni Kitap Satın Al\n5-Oyun");
+
+                secim = Console.ReadLine();
+
+                if (secim == "1")
+                {
+                    Console.WriteLine("****KİTAP FİYATLARI***");
+                    try
+                    {
+                        Console.WriteLine("Lütfen fiyatını öğrenmek istediğiniz kitabın numarasını tuşlayın");
+                        ktpsecim = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Seçtiğiniz kitabın fiyatı " + fiyat[ktpsecim - 1] + "'TL");
+
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Böyle bir kitap bulunamadı");
+
+                    }
+
+                    Console.WriteLine("\n****************\n");
+
+                }
+
+                if (secim == "2")
+                {
+                    Console.WriteLine("***YENİ OKUR KAYDI***\n");
+                    Console.WriteLine("İsminiz:");
+                    ad = Console.ReadLine();
+
+                    Console.WriteLine("Soyisminiz:");
+                    soyad = Console.ReadLine();
+
+                    Console.WriteLine("Okuduğunuz Üniversite:");
+                    universite = Console.ReadLine();
+
+                    Console.WriteLine(ad + soyad + universite);
+                    Console.WriteLine("\n****************\n");
+                }
+
+                if (secim == "3")
+                {
+                    Console.WriteLine("***KİTAP ÖNERİSİ***");
+                    Random c = new Random();
+                    rnd = c.Next(0, ktplr.Length);
+                    Console.WriteLine("Size özel kitap önerimiz:" + ktplr[rnd]);
+                    Console.WriteLine("\n****************\n");
+                }
+
+                if (secim == "4")
+                {
+
+                    Console.WriteLine("***KİTAP SATIN ALMA***");
+                    while (cvp == 1)
+                    {
+                        Console.WriteLine("Satın almak istediğiniz kitabın numarasını girin:");
+                        try
+                        {
+                            ktpsecim = Convert.ToInt32(Console.ReadLine());
+                            ttutar += fiyat[ktpsecim - 1];
+
+                        }
+                        catch (Exception)
+                        {
+
+                            Console.WriteLine("Hatalı giriş yaptınız");
+                        }
+
+
+                        Console.WriteLine("tutar:" + ttutar);
+                        s = 0;
+                        while (s == 0)
+                        {
+                            Console.WriteLine("Başka kitap almak ister misiniz? Evetse (e) Hayırsa (h) harfine basın");
+                            cevap = Console.ReadLine();
+                            switch (cevap)
+                            {
+                                case "e": s = 1; break;
+
+                                case "h":
+                                    cvp = 0;
+                                    s = 1;
+                                    break;
+                                default: Console.WriteLine("Hatalı giriş yaptınız"); break;
+                            }
+                        }
+                    }
+                    Console.WriteLine("\n****************\n");
+                }
+
+                if (secim == "5")
+                // kullanıcıdan biligsayarın random olarak seçtiği kitabı bilmesi istenen oyun
+                {
+                    Console.WriteLine("***KİTAP TAHMİN OYUNU***\nAçıklama:\nÖncelikle kitap listesi yazdıırlır ve bilgisayar bu listeden bir kitap seçer.");
+                    Console.WriteLine("Kulanıcı büyük küçük harfe dikkat ederek(!) kitap ismini girer.Eğer boşluk,simge veya harf doğru yazılmazsa cevap doğru sayılmaz");
+                    Console.WriteLine("Eğer cevabı doğruysa 'Kazandınız' çıktısı alır.");
+                    Console.WriteLine("Cevap yanlışsa 2 kere daha tahmin yapılması istenir bilemez ise doğru cevap yazdırılır ve isterse oyun tekrar başlatılır");
+
+                    string ktpismi, dcevap;
+                    for (int i = 0; i < ktplr.Length; i++)
+                    {
+                        Console.WriteLine(ktplr[i]);
+
+                    }
+                    Random k = new Random();
+                    dcevap = ktplr[k.Next(0, ktplr.Length)];
+                    
+
+                    int c = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Console.WriteLine("Kitap ismi tahmin ediniz:");
+                        ktpismi = Console.ReadLine();
+
+
+                        if (dcevap == ktpismi)
+                        {
+                            Console.WriteLine("KAZANDINIZ");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Yanlış bildiniz ");
+                            c += 1;
+                            if (c == 3)
+                            {
+                                Console.WriteLine("KAYBETTİNİZ\nDOĞRU CEVAP:" + dcevap);
+                            }
+                        }
+
+                    }
+                    Console.WriteLine("\n****************\n");
+
+                }
+                if(secim!="1"&& secim != "2" && secim != "3" && secim != "4" && secim != "5" )
+                {
+                    Console.WriteLine("Yanlış tuşlama yaptınız tekrar deneyin");
+                }
+                while (dvm == 0)
+                {
+                    Console.WriteLine("Menüyü kapatmak istiyorsanız (-1) e devam etmek istiyorsanız (1) e basın");
+                    a = Convert.ToInt32(Console.ReadLine());
+                    if (a != 1 && a != -1)
+                    {
+                        Console.WriteLine("Hatalı giriş yaptınız ");
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+
+
+            Console.Read();
+        }
+    }
+}
